@@ -45,12 +45,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Download Allure results
-        uses: actions/download-artifact@v4
-        with:
-          name: allure-results
-          path: allure-results
-
       - name: Install Allure CLI
         run: |
           sudo apt update
@@ -62,6 +56,12 @@ jobs:
       - name: Generate Allure report
         run: |
           allure generate allure-results --clean -o allure-report
+
+      - name: Download Allure results
+        uses: actions/download-artifact@v4
+        with:
+          name: allure-results
+          path: allure-results
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
