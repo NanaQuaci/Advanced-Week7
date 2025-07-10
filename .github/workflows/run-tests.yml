@@ -46,8 +46,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Allure CLI
-        run: |
-          uses: simple-elf/allure-install-action@v1
+        uses: simple-elf/allure-install-action@v1
 
       - name: Generate Allure report
         run: |
