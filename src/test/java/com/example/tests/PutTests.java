@@ -6,6 +6,8 @@ import io.qameta.allure.*;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.anyOf;
 import static org.hamcrest.Matchers.equalTo;
 
 @Epic("REST API Testing")
@@ -56,5 +58,58 @@ public class PutTests extends BaseTest {
                 .body("id", equalTo(9999))
                 .body("title", equalTo("Updated Title"));
     }
+
+
+    @Story("Update with partial data")
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Verify that PUT /posts/{id} updates only provided fields")
+    @Test
+    public void testUpdatePostWithPartialData() {
+        String partialUpdate = """
+        {
+          "title": "Only Title Updated"
+        }
+    """;
+
+        Response response = PutEndpoint.updatePost(1, partialUpdate);
+
+        response.then()
+                .statusCode(200)
+                .body("title", equalTo("Only Title Updated"));
+    }
+
+    @Story("Update with invalid ID format")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Verify that PUT with a non-numeric ID fails")
+    @Test
+    public void testUpdateWithInvalidIdFormat() {
+        Response response = given()
+                .baseUri("https://jsonplaceholder.typicode.com")
+                .contentType("application/json")
+                .body("""
+            {
+              "title": "Invalid ID",
+              "body": "Test body",
+              "userId": 1
+            }
+        """)
+                .when()
+                .put("/posts/abc");
+
+        response.then()
+                .statusCode(anyOf(equalTo(400), equalTo(404)));
+    }
+
+    @Story("Update with empty body")
+    @Severity(SeverityLevel.MINOR)
+    @Description("Verify that PUT /posts/{id} with an empty body still returns 200 on mock API")
+    @Test
+    public void testUpdateWithEmptyBody() {
+        Response response = PutEndpoint.updatePost(1, "{}");
+
+        response.then()
+                .statusCode(200);
+    }
+
 
 }

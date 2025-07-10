@@ -10,4 +10,12 @@ public class GetEndpoint {
                 .when()
                 .get("/posts/" + id);
     }
+
+
+    public static Response getAllPosts() {
+        return given()
+                .when()
+                .get("/posts");
+    }
+
 }
