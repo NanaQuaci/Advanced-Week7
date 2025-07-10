@@ -93,5 +93,3 @@ allure serve target/allure-results
 
 This project is for educational purposes only.
 
-![CI](https://github.com/NanaQuaci/[YOUR_REPO](https://github.com/NanaQuaci/Advanced-Week7)/actions/workflows/run-tests.yml/badge.svg)
-
