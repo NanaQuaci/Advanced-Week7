@@ -47,11 +47,7 @@ jobs:
 
       - name: Install Allure CLI
         run: |
-          sudo apt update
-          sudo apt install -y default-jre
-          curl -o allure.tgz -L https://github.com/allure-framework/allure2/releases/download/2.27.0/allure-2.27.0.tgz
-          tar -xzf allure.tgz
-          sudo mv allure-2.27.0/bin/allure /usr/bin/allure
+          uses: simple-elf/allure-install-action@v1
 
       - name: Generate Allure report
         run: |
