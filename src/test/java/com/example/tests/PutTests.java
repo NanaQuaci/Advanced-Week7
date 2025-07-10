@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.anyOf;
 import static org.hamcrest.Matchers.equalTo;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
 @Epic("REST API Testing")
 @Feature("PUT Requests")
@@ -32,7 +33,8 @@ public class PutTests extends BaseTest {
 
         response.then()
                 .statusCode(200)
-                .body("title", equalTo("updated"));
+                .body("title", equalTo("updated"))
+                .body(matchesJsonSchemaInClasspath("schemas/post_schema.json"));
     }
 
 
@@ -56,7 +58,8 @@ public class PutTests extends BaseTest {
         response.then()
                 .statusCode(200)
                 .body("id", equalTo(9999))
-                .body("title", equalTo("Updated Title"));
+                .body("title", equalTo("Updated Title"))
+                .body(matchesJsonSchemaInClasspath("schemas/post_schema.json"));
     }
 
 
@@ -110,6 +113,4 @@ public class PutTests extends BaseTest {
         response.then()
                 .statusCode(200);
     }
-
-
 }

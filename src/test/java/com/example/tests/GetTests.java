@@ -24,7 +24,7 @@ public class GetTests extends BaseTest {
         response.then()
                 .statusCode(200)
                 .body("id", equalTo(1))
-                .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("schemas/post-schema.json"));
+                .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("schemas/post_schema.json"));
     }
 
     @Story("Handle invalid GET requests")
