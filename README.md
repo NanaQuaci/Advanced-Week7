@@ -92,3 +92,4 @@ allure serve target/allure-results
 ## 🏁 License
 
 This project is for educational purposes only.
+
