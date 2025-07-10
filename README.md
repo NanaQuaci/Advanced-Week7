@@ -75,6 +75,9 @@ allure serve target/allure-results
 
 > If you don’t have Allure installed: [Install Allure CLI](https://docs.qameta.io/allure/#_installing_a_commandline)
 
+## Find Report here
+
+https://nanaquaci.github.io/Advanced-Week7/
 ---
 
 ## 🔗 Useful Links
