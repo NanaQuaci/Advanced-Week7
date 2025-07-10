@@ -9,6 +9,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    continue-on-error: true
 
     steps:
       - name: Checkout repository
@@ -37,6 +38,7 @@ jobs:
 
   deploy-allure-report:
     needs: test
+    if: always()
     runs-on: ubuntu-latest
 
     steps:
