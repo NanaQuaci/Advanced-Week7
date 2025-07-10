@@ -1,3 +1,7 @@
+### 📊 CI Status
+
+![API Tests](https://github.com/NanaQuaci/Advanced-Week7/actions/workflows/run-tests.yml/badge.svg)
+
 # 🧪 API Automation Testing – REST Assured Project
 
 This project demonstrates automated API testing using **REST Assured** with **JUnit 5** and **Allure Reports**. It covers full **CRUD operations** (Create, Read, Update, Delete) against the `https://jsonplaceholder.typicode.com` mock API.
